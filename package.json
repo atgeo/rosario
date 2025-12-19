@@ -1,20 +1,28 @@
 {
   "name": "rosario",
   "version": "0.1.0",
-  "description": "",
+  "description": "A tiny Catholic rosary prayer engine for web apps",
   "keywords": [
     "rosary",
-    "rosario"
+    "rosario",
+    "catholic"
   ],
   "license": "MIT",
-  "author": "Georges Kmeid",
+  "repository": "atgeo/rosario",
+  "author": "Georges Kmeid <georgesk117@gmail.com>",
   "main": "index.js",
+  "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./index.js"
   },
-  "types": "rosario.d.ts",
+  "types": "index.d.ts",
+  "files": [
+    "LICENSE",
+    "index.js",
+    "index.d.ts"
+  ],
   "scripts": {
     "test": "node --test"
-  },
-  "private": true
+  }
 }
