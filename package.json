@@ -8,7 +8,10 @@
     "catholic"
   ],
   "license": "MIT",
-  "repository": "atgeo/rosario",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atgeo/rosario.git"
+  },
   "author": "Georges Kmeid <georgesk117@gmail.com>",
   "main": "index.js",
   "type": "module",
