@@ -1,11 +1,11 @@
 # rosario
 
-![npm version](https://img.shields.io/npm/v/atgeo)
+![npm version](https://img.shields.io/npm/v/rosario)
 
 ## Installation
 
 ```bash
-npm install atgeo
+npm install rosario
 ```
 
 ## Usage
