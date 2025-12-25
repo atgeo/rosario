@@ -1,5 +1,5 @@
-import { MYSTERIES } from './mysteries.js'
-import { PRAYERS } from './prayers.js'
+import { MYSTERIES } from './src/mysteries.js'
+import { PRAYERS } from './src/prayers.js'
 
 const DECADE = [
   'ourFather',

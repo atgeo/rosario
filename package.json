@@ -23,7 +23,8 @@
   "files": [
     "LICENSE",
     "index.js",
-    "index.d.ts"
+    "index.d.ts",
+    "src/"
   ],
   "scripts": {
     "test": "node --test"
