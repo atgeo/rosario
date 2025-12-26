@@ -2,20 +2,20 @@ import test from 'node:test'
 import assert from 'node:assert'
 import rosario from '../index.js'
 
-test('creates a rosary session', () => {
-  const r = rosario()
+test('creates a rosary session', async () => {
+  const r = await rosario()
   assert.ok(r)
   assert.strictEqual(typeof r.next, 'function')
 })
 
-test('starts at the first prayer', () => {
-  const r = rosario()
+test('starts at the first prayer', async () => {
+  const r = await rosario()
   const current = r.current()
   assert.ok(current)
 })
 
-test('advances through prayers', () => {
-  const r = rosario()
+test('advances through prayers', async () => {
+  const r = await rosario()
   const first = r.current()
 
   r.next()
@@ -24,8 +24,8 @@ test('advances through prayers', () => {
   assert.notStrictEqual(first, second)
 })
 
-test('eventually completes', () => {
-  const r = rosario()
+test('eventually completes', async () => {
+  const r = await rosario()
 
   while (!r.done()) {
     r.next()

@@ -1,5 +1,5 @@
 import { MYSTERIES } from './src/mysteries.js'
-import { PRAYERS } from './src/prayers.js'
+import { loadLang } from './src/lang/index.js'
 
 const DECADE = [
   'ourFather',
@@ -23,29 +23,41 @@ function buildOrder (mystery) {
   ]
 }
 
-export default function rosario ({ mystery = 'joyful' } = {}) {
+export default async function rosario ({
+  mystery = 'joyful',
+  lang = 'en',
+} = {}) {
+  const locale =
+    typeof lang === 'string'
+      ? await loadLang(lang)
+      : lang
+
+  if (!locale || !locale.prayers) {
+    throw new Error('Invalid language object: missing `prayers`')
+  }
+
   const order = buildOrder(mystery)
   let index = 0
 
   return {
-    next() {
+    next () {
       if (index < order.length - 1) index++
     },
 
-    current() {
+    current () {
       const key = order[index]
       return {
         prayer: key,
-        text: PRAYERS[key]
+        text: locale.prayers[key],
       }
     },
 
-    done() {
+    done () {
       return index >= order.length - 1
     },
 
-    reset() {
+    reset () {
       index = 0
-    }
+    },
   }
 }
