@@ -10,7 +10,7 @@ npm install rosario
 
 ## Usage
 
-```bash
+```javascript
 import rosario from 'rosario';
 
 const r = await rosario({
