@@ -1,6 +1,6 @@
 {
   "name": "rosario",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A tiny Catholic rosary prayer engine for web apps",
   "keywords": [
     "rosary",
