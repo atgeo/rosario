@@ -2,6 +2,11 @@
 
 ![npm version](https://img.shields.io/npm/v/rosario)
 
+## Languages
+
+- English (en)
+- Latin (la)
+
 ## Installation
 
 ```bash
