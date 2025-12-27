@@ -4,9 +4,13 @@ export type Mystery =
     | 'glorious'
     | 'luminous'
 
+export type Language =
+    | 'en'
+    | 'la'
+
 export interface RosarioOptions {
     mystery?: Mystery
-    lang?: string
+    lang?: Language
 }
 
 export interface RosarioCurrent {
