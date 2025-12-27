@@ -2,6 +2,8 @@
 
 ![npm version](https://img.shields.io/npm/v/rosario)
 
+A tiny Holy Rosary prayer engine for web apps, providing programmatic access to the prayers and mysteries.
+
 ## Languages
 
 - English (en)
