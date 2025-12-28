@@ -34,8 +34,9 @@ test('eventually completes', async () => {
   assert.ok(r.done())
 })
 
-test('throws on invalid mystery', () => {
-  assert.throws(() => {
-    rosario({ mystery: 'invalid' })
-  })
+test('throws on invalid mystery', async () => {
+  await assert.rejects(
+    () => rosario({ mystery: 'invalid' }),
+    /Unknown mystery/,
+  )
 })
