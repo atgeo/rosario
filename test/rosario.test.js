@@ -40,3 +40,19 @@ test('throws on invalid mystery', async () => {
     /Unknown mystery/,
   )
 })
+
+test('returns a mystery at the start of a decade', async () => {
+  const r = await rosario({ mystery: 'joyful', lang: 'en' })
+
+  let step
+
+  do {
+    step = r.current()
+    if (step.type !== 'mystery') r.next()
+  } while (step.type !== 'mystery')
+
+  assert.strictEqual(step.type, 'mystery')
+  assert.ok(step.key)
+  assert.ok(step.text)
+  assert.strictEqual(step.text, 'The Annunciation')
+})
