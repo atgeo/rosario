@@ -7,6 +7,7 @@ export type Mystery =
 export type Language =
     | 'en'
     | 'la'
+    | 'it'
 
 export interface RosarioOptions {
     mystery?: Mystery
