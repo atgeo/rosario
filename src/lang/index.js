@@ -1,12 +1,16 @@
+const LANG_LOADERS = {
+  en: () => import('./en.js'),
+  la: () => import('./la.js'),
+  it: () => import('./it.js'),
+}
+
 export async function loadLang (code) {
-  switch (code) {
-    case 'en':
-      return import('./en.js').then(m => m.default)
-    case 'la':
-      return import('./la.js').then(m => m.default)
-    case 'it':
-      return import('./it.js').then(m => m.default)
-    default:
-      throw new Error(`Unsupported language: ${code}`)
+  const loader = LANG_LOADERS[code]
+
+  if (!loader) {
+    throw new Error(`Unsupported language: ${code}`)
   }
+
+  const module = await loader()
+  return module.default
 }

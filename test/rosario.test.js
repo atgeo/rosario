@@ -41,6 +41,13 @@ test('throws on invalid mystery', async () => {
   )
 })
 
+test('throws on unsupported language', async () => {
+  await assert.rejects(
+    () => rosario({ lang: 'aa' }),
+    /Unsupported language: aa/,
+  )
+})
+
 test('returns a mystery at the start of a decade', async () => {
   const r = await rosario({ mystery: 'joyful', lang: 'en' })
 
