@@ -30,8 +30,22 @@ function buildOrder (mystery) {
   ]
 }
 
+function getDailyMystery() {
+  const day = new Date().getDay()
+
+  switch (day) {
+    case 1: return 'joyful'
+    case 2: return 'sorrowful'
+    case 3: return 'glorious'
+    case 4: return 'luminous'
+    case 5: return 'sorrowful'
+    case 6: return 'joyful'
+    case 7: return 'glorious'
+  }
+}
+
 export default async function rosario ({
-  mystery = 'joyful',
+  mystery = getDailyMystery(),
   lang = 'en',
 } = {}) {
   const locale =
@@ -76,5 +90,7 @@ export default async function rosario ({
     reset () {
       index = 0
     },
+
+    getDailyMystery: () => mystery,
   }
 }
