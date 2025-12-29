@@ -28,6 +28,8 @@ export interface RosarioSession {
     done(): boolean
 
     reset(): void
+
+    getDailyMystery(): string
 }
 
 export default function rosario(
