@@ -4,6 +4,8 @@ export async function loadLang (code) {
       return import('./en.js').then(m => m.default)
     case 'la':
       return import('./la.js').then(m => m.default)
+    case 'it':
+      return import('./it.js').then(m => m.default)
     default:
       throw new Error(`Unsupported language: ${code}`)
   }
