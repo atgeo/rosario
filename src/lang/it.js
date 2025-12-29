@@ -20,7 +20,7 @@ export default {
     transfiguration: 'La Trasfigurazione',
     institutionEucharist: 'L’Istituzione dell’Eucaristia',
 
-    agonyInGarden: 'L\'Agonia di Gesù nell’orto del Getsemani',
+    agonyInGarden: 'L’Agonia di Gesù nell’orto del Getsemani',
     scourgingAtPillar: 'La Flagellazione di Gesù alla colonna',
     crowningWithThorns: 'L’Incoronazione di spine di Gesù',
     carryingCross: 'Gesù caricato della croce',
