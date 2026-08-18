@@ -1,0 +1,14 @@
+---
+description: Confirm commit messages before creating git commits
+alwaysApply: true
+---
+
+# Git commits
+
+When asked to commit, **never run `git commit` until the user confirms the message.**
+
+1. Inspect the diff and draft a concise commit message (why, not what).
+2. Show the proposed message and wait for explicit confirmation (or an edited message).
+3. Only then stage and commit with the approved text.
+
+Do not invent a message and commit in the same turn. Suggesting the message is fine; applying it requires confirmation.

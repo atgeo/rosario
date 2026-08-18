@@ -1,0 +1,8 @@
+.idea/
+
+# Cursor: ignore local state, keep shared rules/commands
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+!.cursor/commands/
+!.cursor/commands/**

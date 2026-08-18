@@ -1,0 +1,62 @@
+---
+description: Semver and npm release rules for rosario
+alwaysApply: true
+---
+
+# Versioning (semver + npm)
+
+Follow [SemVer 2.0.0](https://semver.org/) and [npm semver ranges](https://docs.npmjs.com/about-semantic-versioning).
+
+Version lives in `package.json` only. Tag releases `vX.Y.Z` (e.g. `v0.9.0`).
+
+Current phase: **pre-1.0** (`0.8.1`). `0.x` signals an unstable API per SemVer §4.
+
+## Confirmation required
+
+**Never bump the version without explicit user confirmation.**
+
+- Do not edit `package.json`, run `npm version`, commit release commits, tag, or publish until the user approves the exact version (e.g. `0.9.0`).
+- You may suggest bump level and target version; wait for confirmation before applying.
+
+## Pre-1.0 (`0.y.z`) — current rules
+
+While `major === 0`, npm treats the API as unstable. **Classify by impact, not diff size.**
+
+| Change | Bump | Example |
+|--------|------|---------|
+| Breaking public API change | **Minor** (`0.2.0` → `0.3.0`) | async API (`0.2.0`), mystery steps in order (`0.5.0`), new default mystery (`0.8.0`) |
+| Backward-compatible addition | **Minor** (`0.8.1` → `0.9.0`) | new optional option, new language, new session method |
+| Bug fix, docs, typings, refactor (same behavior) | **Patch** (`0.8.1` → `0.8.2`) | translation fix, loader bug, `index.d.ts` fix |
+
+Notes:
+- Mark breaking commits with `feat!:` or `BREAKING CHANGE:` in the body (Conventional Commits).
+- Do **not** use `0.0.x` — start at `0.1.0`; caret ranges pin `0.0.x` almost exactly.
+- Ship clean `0.y.z` to `latest`; no `-beta` suffix on everyday releases. Prereleases need `npm publish --tag beta` (never overwrite `latest`).
+- Consumers on `^0.8.0` get `>=0.8.0 <0.9.0` only — crossing `0.8` → `0.9` requires an explicit upgrade (correct for breaks).
+
+## Post-1.0 (`1.y.z`+) — when API is stable
+
+Cut `1.0.0` when ready to commit to backward compatibility. After that:
+
+| Change | Bump |
+|--------|------|
+| Breaking public API change | **Major** (`1.0.0` → `2.0.0`) |
+| Backward-compatible addition | **Minor** (`1.0.0` → `1.1.0`) |
+| Bug fix (no API change) | **Patch** (`1.0.0` → `1.0.1`) |
+
+Breaking = anything a consumer could observe: removed/renamed exports, changed defaults, stricter types, changed `current()` shape, prayer order without opt-in, dropped language, raised `engines`.
+
+## Public API surface (this package)
+
+- Default export: `rosario(options?)` → session
+- Session: `next()`, `current()`, `done()`, `reset()`, `getDailyMystery()`
+- Options: `mystery`, `lang`, `includeConcludingPrayers` (and future options)
+- Published files: `package.json` `files` whitelist only
+
+## Release checklist
+
+1. Run `npm test`.
+2. Propose bump level + target version; **wait for user confirmation**.
+3. After confirmation: `npm version patch|minor|major` (creates commit + `vX.Y.Z` tag), or bump `package.json` manually with commit message `X.Y.Z`.
+4. `npm publish` only when the user asks.
+5. Never publish `.gitignore`, tests, or `.idea/` — `files` in `package.json` controls the tarball.
