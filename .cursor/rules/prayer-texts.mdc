@@ -1,0 +1,24 @@
+---
+description: Use official liturgical prayer texts only; never paraphrase
+globs: src/lang/**/*.js
+alwaysApply: true
+---
+
+# Official prayer texts
+
+Rosary and prayer strings in `src/lang/` must be **official liturgical texts**. Never invent, paraphrase, summarize, or “improve” wording.
+
+## Sources (in order)
+
+1. **Latin (`la`)** — typical liturgical text (Liturgy of the Hours / traditional collect).
+2. **English (`en`)** — traditional English used with the rest of this locale (thee/thou), or USCCB if modernizing the whole English file.
+3. **Italian (`it`)** — Vatican News / Compendium of the Catechism.
+4. **Arabic (`ar`)** — **Maronite / Lebanese Catholic first**, then **Roman (Latin) Catholic Arabic**. Prefer Noursat / Télé Lumière and Lebanese printed rosaries. Do not use Coptic-only or homemade translations when a Maronite or Latin-rite Arabic text exists.
+
+If a language has no official text for a prayer, **do not fill it with a paraphrase**. Leave it out or ask the user.
+
+## What not to do
+
+- Do not translate from English/Latin yourself.
+- Do not mix versicle labels (`الطلبة` / `الجواب`) unless that printed source uses them.
+- Match existing locale style (punctuation, Amen) only when the official text already matches; do not rewrite the prayer to fit style.
