@@ -8,7 +8,12 @@ const DECADE = [
   'fatimaPrayer',
 ]
 
-function buildOrder (mystery) {
+const CONCLUDING_PRAYERS = [
+  'hailHolyQueen',
+  'closingPrayer',
+]
+
+function buildOrder (mystery, { includeConcludingPrayers = false }) {
   const events = MYSTERIES[mystery]
   if (!events) throw new Error('Unknown mystery')
 
@@ -27,6 +32,13 @@ function buildOrder (mystery) {
         key: prayerKey,
       })),
     ]),
+
+    ...(includeConcludingPrayers
+      ? CONCLUDING_PRAYERS.map(key => ({
+        type: 'prayer',
+        key,
+      }))
+      : []),
   ]
 }
 
@@ -47,6 +59,7 @@ function getDailyMystery() {
 export default async function rosario ({
   mystery = getDailyMystery(),
   lang = 'en',
+  includeConcludingPrayers = false,
 } = {}) {
   const locale =
     typeof lang === 'string'
@@ -57,7 +70,7 @@ export default async function rosario ({
     throw new Error('Invalid language object: missing `prayers`')
   }
 
-  const order = buildOrder(mystery)
+  const order = buildOrder(mystery, { includeConcludingPrayers })
   let index = 0
 
   return {

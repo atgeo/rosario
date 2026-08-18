@@ -5,6 +5,8 @@ export default {
     hailMary: 'Hail Mary, full of grace. The Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death, Amen.',
     gloryBe: 'Glory be to the Father, and to the Son, and to the Holy Spirit. As it was in the beginning, is now, and ever shall be, world without end. Amen.',
     fatimaPrayer: 'O my Jesus, forgive us our sins, save us from the fires of hell, lead all souls to Heaven, especially those in most need of Thy mercy.',
+    hailHolyQueen: 'Hail, holy Queen, Mother of mercy, our life, our sweetness and our hope. To thee do we cry, poor banished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn, then, most gracious advocate, thine eyes of mercy toward us, and after this, our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary.\n\nV. Pray for us, O holy Mother of God.\nR. That we may be made worthy of the promises of Christ.',
+    closingPrayer: 'Let us pray. O God, Whose Only-Begotten Son, by His life, death and resurrection, has purchased for us the rewards of eternal life: grant, we beseech Thee, that by meditating upon these mysteries of the most holy Rosary of the Blessed Virgin Mary, we may imitate what they contain, and obtain what they promise, through the same Christ our Lord. Amen.',
   },
 
   mysteries: {
@@ -30,6 +32,6 @@ export default {
     ascension: 'The Ascension',
     descentHolySpirit: 'Descent of the Holy Spirit',
     assumption: 'The Assumption',
-    coronation: 'The Coronation'
+    coronation: 'The Coronation',
   },
 }

@@ -5,6 +5,8 @@ export default {
     hailMary: 'Ave, o Maria, piena di grazia, il Signore è con te. Tu sei benedetta fra le donne e benedetto è il frutto del tuo seno, Gesù Santa Maria, Madre di Dio, prega per noi peccatoti, adesso e nell’ora della nostra morte. Amen.',
     gloryBe: 'Gloria al Padre e al Figlio e allo Spirito Santo. Come era nel principio, ora e sempre nei secoli dei secoli. Amen.',
     fatimaPrayer: 'O Gesù, perdona le nostre colpe, preservaci dal fuoco dell’inferno, porta in cielo tutte le anime, specialmente le più bisognose della vostra misericordia. Amen.',
+    hailHolyQueen: 'Salve, o Regina, Madre di misericordia, vita, dolcezza e speranza nostra, salve. A te ricorriamo, esuli figli di Eva; a te sospiriamo, gementi e piangenti in questa valle di lacrime. Orsù dunque, avvocata nostra, rivolgi a noi gli occhi tuoi misericordiosi. E mostraci, dopo questo esilio, Gesù, il frutto benedetto del tuo seno. O clemente, o pia, o dolce Vergine Maria.\n\nV. Prega per noi, Santa Madre di Dio.\nR. Perché siamo fatti degni delle promesse di Cristo.',
+    closingPrayer: 'Preghiamo. O Dio, il cui Unigenito, con la sua vita, morte e risurrezione, ci ha ottenuto i premi della vita eterna: concedi, ti preghiamo, che meditando questi misteri del santissimo Rosario della Beata Vergine Maria, imitiamo ciò che contengono e otteniamo ciò che promettono. Per lo stesso Cristo nostro Signore. Amen.',
   },
 
   mysteries: {

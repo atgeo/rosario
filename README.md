@@ -25,6 +25,7 @@ import rosario from 'rosario';
 const r = await rosario({
   mystery: 'joyful',
   lang: 'en',
+  includeConcludingPrayers: true,
 });
 
 console.log(r.current());
@@ -32,3 +33,5 @@ console.log(r.current());
 r.next();
 console.log(r.current());
 ```
+
+`includeConcludingPrayers` is optional and defaults to `false`. When `true`, Hail Holy Queen and the closing prayer are appended after the fifth decade.

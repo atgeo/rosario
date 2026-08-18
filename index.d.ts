@@ -13,10 +13,12 @@ export type Language =
 export interface RosarioOptions {
     mystery?: Mystery
     lang?: Language
+    includeConcludingPrayers?: boolean
 }
 
 export interface RosarioCurrent {
-    prayer: string
+    type: 'prayer' | 'mystery'
+    key: string
     text: string
 }
 
