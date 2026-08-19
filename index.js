@@ -46,13 +46,13 @@ function getDailyMystery() {
   const day = new Date().getDay()
 
   switch (day) {
+    case 0: return 'glorious'
     case 1: return 'joyful'
     case 2: return 'sorrowful'
     case 3: return 'glorious'
     case 4: return 'luminous'
     case 5: return 'sorrowful'
     case 6: return 'joyful'
-    case 7: return 'glorious'
   }
 }
 

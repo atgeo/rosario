@@ -46,6 +46,16 @@ test('eventually completes', async () => {
   assert.ok(r.done())
 })
 
+test('defaults to Glorious mysteries on Sunday', async (t) => {
+  t.mock.timers.enable({
+    apis: ['Date'],
+    now: new Date(2026, 7, 16, 12),
+  })
+
+  const r = await rosario()
+  assert.strictEqual(r.getDailyMystery(), 'glorious')
+})
+
 test('throws on invalid mystery', async () => {
   await assert.rejects(
     () => rosario({ mystery: 'invalid' }),
