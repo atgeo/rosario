@@ -9,18 +9,21 @@
     "catholic"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/atgeo/rosario#readme",
+  "bugs": "https://github.com/atgeo/rosario/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atgeo/rosario.git"
   },
   "author": "Georges Kmeid <georgesk117@gmail.com>",
-  "main": "index.js",
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": "./index.js"
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
   },
-  "types": "index.d.ts",
   "files": [
     "LICENSE",
     "index.js",
