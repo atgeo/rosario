@@ -15,8 +15,9 @@ Current phase: **pre-1.0** (`0.8.1`). `0.x` signals an unstable API per SemVer �
 
 **Never bump the version without explicit user confirmation.**
 
-- Do not edit `package.json`, run `npm version`, commit release commits, tag, or publish until the user approves the exact version (e.g. `0.9.0`).
+- Do not edit `package.json`, run `npm version`, commit release commits, or tag until the user approves the exact version (e.g. `0.9.0`).
 - You may suggest bump level and target version; wait for confirmation before applying.
+- **`npm publish` is always user-approved**, separately from the version bump. Do not push a `v*` tag or publish until the user explicitly asks.
 
 ## Pre-1.0 (`0.y.z`) — current rules
 
@@ -57,6 +58,6 @@ Breaking = anything a consumer could observe: removed/renamed exports, changed d
 
 1. Run `npm test`.
 2. Propose bump level + target version; **wait for user confirmation**.
-3. After confirmation: `npm version patch|minor|major` (creates commit + `vX.Y.Z` tag), or bump `package.json` manually with commit message `X.Y.Z`.
-4. `npm publish` only when the user asks.
+3. After version confirmation: `npm version patch|minor|major` (creates commit + `vX.Y.Z` tag), or bump `package.json` manually with commit message `X.Y.Z`.
+4. **`npm publish` only when the user asks.** Then push the `v*` tag so `publish.yml` publishes (Trusted Publishing). Laptop `npm publish` only if the Action fails.
 5. Never publish `.gitignore`, tests, or `.idea/` — `files` in `package.json` controls the tarball.
