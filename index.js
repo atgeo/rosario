@@ -1,6 +1,15 @@
 import { MYSTERIES } from './src/mysteries.js'
 import { loadLang } from './src/lang/index.js'
 
+const OPENING = [
+  'apostlesCreed',
+  'ourFather',
+  'hailMary',
+  'hailMary',
+  'hailMary',
+  'gloryBe',
+]
+
 const DECADE = [
   'ourFather',
   ...Array(10).fill('hailMary'),
@@ -13,17 +22,57 @@ const CONCLUDING_PRAYERS = [
   'closingPrayer',
 ]
 
+const REQUIRED_PRAYERS = [...new Set([
+  ...OPENING,
+  ...DECADE,
+  ...CONCLUDING_PRAYERS,
+])]
+
+const REQUIRED_MYSTERIES = Object.values(MYSTERIES).flat()
+
+function isNonEmptyString (value) {
+  return typeof value === 'string' && value.trim() !== ''
+}
+
+function assertLocale (locale) {
+  if (locale == null || typeof locale !== 'object') {
+    throw new Error('Invalid language object')
+  }
+
+  const hasPrayers = locale.prayers != null && typeof locale.prayers === 'object'
+  const hasMysteries = locale.mysteries != null && typeof locale.mysteries === 'object'
+  const missing = []
+
+  if (!hasPrayers) missing.push('prayers')
+  if (!hasMysteries) missing.push('mysteries')
+
+  if (hasPrayers) {
+    for (const key of REQUIRED_PRAYERS) {
+      if (!isNonEmptyString(locale.prayers[key])) {
+        missing.push(`prayers.${key}`)
+      }
+    }
+  }
+
+  if (hasMysteries) {
+    for (const key of REQUIRED_MYSTERIES) {
+      if (!isNonEmptyString(locale.mysteries[key])) {
+        missing.push(`mysteries.${key}`)
+      }
+    }
+  }
+
+  if (missing.length > 0) {
+    throw new Error(`Invalid language object: missing \`${missing.join('`, `')}\``)
+  }
+}
+
 function buildOrder (mystery, { includeConcludingPrayers = false }) {
   const events = MYSTERIES[mystery]
   if (!events) throw new Error('Unknown mystery')
 
   return [
-    { type: 'prayer', key: 'apostlesCreed' },
-    { type: 'prayer', key: 'ourFather' },
-    { type: 'prayer', key: 'hailMary' },
-    { type: 'prayer', key: 'hailMary' },
-    { type: 'prayer', key: 'hailMary' },
-    { type: 'prayer', key: 'gloryBe' },
+    ...OPENING.map(key => ({ type: 'prayer', key })),
 
     ...events.flatMap(eventKey => [
       { type: 'mystery', key: eventKey },
@@ -66,9 +115,7 @@ export default async function rosario ({
       ? await loadLang(lang)
       : lang
 
-  if (!locale || !locale.prayers) {
-    throw new Error('Invalid language object: missing `prayers`')
-  }
+  assertLocale(locale)
 
   const order = buildOrder(mystery, { includeConcludingPrayers })
   let index = 0

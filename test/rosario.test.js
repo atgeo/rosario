@@ -1,6 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert'
 import rosario from '../index.js'
+import en from '../src/lang/en.js'
 
 function collectSteps (r) {
   const steps = []
@@ -68,6 +69,46 @@ test('throws on unsupported language', async () => {
     () => rosario({ lang: 'aa' }),
     /Unsupported language: aa/,
   )
+})
+
+test('throws when custom locale is missing prayers', async () => {
+  await assert.rejects(
+    () => rosario({ lang: { mysteries: en.mysteries } }),
+    /missing `prayers`/,
+  )
+})
+
+test('throws when custom locale is missing mysteries', async () => {
+  await assert.rejects(
+    () => rosario({ lang: { prayers: en.prayers } }),
+    /missing `mysteries`/,
+  )
+})
+
+test('throws when custom locale is missing a required prayer', async () => {
+  const lang = structuredClone(en)
+  delete lang.prayers.hailMary
+
+  await assert.rejects(
+    () => rosario({ lang }),
+    /missing `prayers.hailMary`/,
+  )
+})
+
+test('throws when custom locale has empty mystery text', async () => {
+  const lang = structuredClone(en)
+  lang.mysteries.annunciation = '   '
+
+  await assert.rejects(
+    () => rosario({ lang }),
+    /missing `mysteries.annunciation`/,
+  )
+})
+
+test('accepts a complete custom locale', async () => {
+  const r = await rosario({ mystery: 'joyful', lang: structuredClone(en) })
+  assert.strictEqual(r.current().key, 'apostlesCreed')
+  assert.ok(r.current().text)
 })
 
 test('returns a mystery at the start of a decade', async () => {
