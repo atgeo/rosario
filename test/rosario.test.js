@@ -37,7 +37,10 @@ test('advances through prayers', async () => {
 })
 
 test('is not done on the last prayer', async () => {
-  const r = await rosario({ mystery: 'joyful' })
+  const r = await rosario({
+    mystery: 'joyful',
+    includeConcludingPrayers: false,
+  })
   let last
 
   while (!r.done()) {
@@ -50,11 +53,8 @@ test('is not done on the last prayer', async () => {
   assert.strictEqual(r.current().key, 'fatimaPrayer')
 })
 
-test('is done after next on the closing prayer when concluding prayers are included', async () => {
-  const r = await rosario({
-    mystery: 'joyful',
-    includeConcludingPrayers: true,
-  })
+test('is done after next on the closing prayer', async () => {
+  const r = await rosario({ mystery: 'joyful' })
   let last
 
   while (!r.done()) {
@@ -146,23 +146,9 @@ test('returns a mystery at the start of a decade', async () => {
   assert.strictEqual(step.text, 'The Annunciation')
 })
 
-test('omits concluding prayers by default', async () => {
+test('includes concluding prayers by default', async () => {
   const r = await rosario({ mystery: 'joyful', lang: 'en' })
   const keys = collectSteps(r).map(step => step.key)
-
-  assert.ok(!keys.includes('hailHolyQueen'))
-  assert.ok(!keys.includes('closingPrayer'))
-})
-
-test('appends Hail Holy Queen and closing prayer after 5 decades when enabled', async () => {
-  const r = await rosario({
-    mystery: 'joyful',
-    lang: 'en',
-    includeConcludingPrayers: true,
-  })
-
-  const steps = collectSteps(r)
-  const keys = steps.map(step => step.key)
 
   const lastMysteryIndex = keys.lastIndexOf('findingInTemple')
   const hailIndex = keys.indexOf('hailHolyQueen')
@@ -171,9 +157,19 @@ test('appends Hail Holy Queen and closing prayer after 5 decades when enabled', 
   assert.ok(hailIndex > lastMysteryIndex)
   assert.strictEqual(closingIndex, hailIndex + 1)
   assert.strictEqual(closingIndex, keys.length - 1)
+})
 
-  assert.ok(steps[hailIndex].text)
-  assert.ok(steps[closingIndex].text)
+test('omits Hail Holy Queen and closing prayer when includeConcludingPrayers is false', async () => {
+  const r = await rosario({
+    mystery: 'joyful',
+    lang: 'en',
+    includeConcludingPrayers: false,
+  })
+  const keys = collectSteps(r).map(step => step.key)
+
+  assert.ok(!keys.includes('hailHolyQueen'))
+  assert.ok(!keys.includes('closingPrayer'))
+  assert.strictEqual(keys.at(-1), 'fatimaPrayer')
 })
 
 test('resolves concluding prayer text in every language', async () => {
@@ -181,7 +177,6 @@ test('resolves concluding prayer text in every language', async () => {
     const r = await rosario({
       mystery: 'joyful',
       lang,
-      includeConcludingPrayers: true,
     })
 
     const steps = collectSteps(r)

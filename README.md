@@ -25,7 +25,6 @@ import rosario from 'rosario';
 const r = await rosario({
   mystery: 'joyful',
   lang: 'en',
-  includeConcludingPrayers: true,
 });
 
 while (!r.done()) {
@@ -34,6 +33,6 @@ while (!r.done()) {
 }
 ```
 
-`includeConcludingPrayers` is optional and defaults to `false`. When `true`, Hail Holy Queen and the closing prayer are appended after the fifth decade.
+`includeConcludingPrayers` is optional and defaults to `true`. Hail Holy Queen and the closing prayer follow the fifth decade. Pass `false` to stop after the fifth Fatima prayer.
 
-`done()` is true after `next()` on the last prayer (the fifth Fatima prayer, or the closing prayer when concluding prayers are included). `current()` still returns that last prayer.
+`done()` is true after `next()` on the last prayer (the closing prayer, or the fifth Fatima prayer when concluding prayers are omitted). `current()` still returns that last prayer.

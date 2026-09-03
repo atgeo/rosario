@@ -67,7 +67,7 @@ function assertLocale (locale) {
   }
 }
 
-function buildOrder (mystery, { includeConcludingPrayers = false }) {
+function buildOrder (mystery, { includeConcludingPrayers = true }) {
   const events = MYSTERIES[mystery]
   if (!events) throw new Error('Unknown mystery')
 
@@ -108,7 +108,7 @@ function getDailyMystery() {
 export default async function rosario ({
   mystery = getDailyMystery(),
   lang = 'en',
-  includeConcludingPrayers = false,
+  includeConcludingPrayers = true,
 } = {}) {
   const locale =
     typeof lang === 'string'
