@@ -122,11 +122,11 @@ export default async function rosario ({
 
   return {
     next () {
-      if (index < order.length - 1) index++
+      if (index < order.length) index++
     },
 
     current () {
-      const item = order[index]
+      const item = order[Math.min(index, order.length - 1)]
 
       if (item.type === 'mystery') {
         return {
@@ -144,7 +144,7 @@ export default async function rosario ({
     },
 
     done () {
-      return index >= order.length - 1
+      return index >= order.length
     },
 
     reset () {

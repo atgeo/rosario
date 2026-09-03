@@ -6,12 +6,11 @@ import en from '../src/lang/en.js'
 function collectSteps (r) {
   const steps = []
 
-  do {
+  while (!r.done()) {
     steps.push(r.current())
     r.next()
-  } while (!r.done())
+  }
 
-  steps.push(r.current())
   return steps
 }
 
@@ -37,13 +36,33 @@ test('advances through prayers', async () => {
   assert.notStrictEqual(first, second)
 })
 
-test('eventually completes', async () => {
-  const r = await rosario()
+test('is not done on the last prayer', async () => {
+  const r = await rosario({ mystery: 'joyful' })
+  let last
 
   while (!r.done()) {
+    last = r.current()
     r.next()
   }
 
+  assert.strictEqual(last.key, 'fatimaPrayer')
+  assert.ok(r.done())
+  assert.strictEqual(r.current().key, 'fatimaPrayer')
+})
+
+test('is done after next on the closing prayer when concluding prayers are included', async () => {
+  const r = await rosario({
+    mystery: 'joyful',
+    includeConcludingPrayers: true,
+  })
+  let last
+
+  while (!r.done()) {
+    last = r.current()
+    r.next()
+  }
+
+  assert.strictEqual(last.key, 'closingPrayer')
   assert.ok(r.done())
 })
 

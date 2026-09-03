@@ -28,10 +28,12 @@ const r = await rosario({
   includeConcludingPrayers: true,
 });
 
-console.log(r.current());
-
-r.next();
-console.log(r.current());
+while (!r.done()) {
+  console.log(r.current());
+  r.next();
+}
 ```
 
 `includeConcludingPrayers` is optional and defaults to `false`. When `true`, Hail Holy Queen and the closing prayer are appended after the fifth decade.
+
+`done()` is true after `next()` on the last prayer (the fifth Fatima prayer, or the closing prayer when concluding prayers are included). `current()` still returns that last prayer.
