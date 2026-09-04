@@ -14,7 +14,7 @@ alwaysApply: false
 - Defaults and prayer order a consumer can observe
 - Locale text or language additions
 
-Unreleased work since the last published version goes under `[Unreleased]`. The version commit retitles that section to `[X.Y.Z] - YYYY-MM-DD`.
+When there are unpublished consumer-facing changes, list them under `[Unreleased]`. Do not leave an empty `[Unreleased]` section. The version commit retitles that heading to `[X.Y.Z] - YYYY-MM-DD`.
 
 ## Do not include
 
