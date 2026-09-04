@@ -126,7 +126,7 @@ test('throws when custom locale has empty mystery text', async () => {
 
 test('accepts a complete custom locale', async () => {
   const r = await rosario({ mystery: 'joyful', lang: structuredClone(en) })
-  assert.strictEqual(r.current().key, 'apostlesCreed')
+  assert.strictEqual(r.current().key, 'creed')
   assert.ok(r.current().text)
 })
 

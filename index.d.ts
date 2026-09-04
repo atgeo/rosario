@@ -11,7 +11,7 @@ export type Language =
   | 'ar'
 
 export type PrayerKey =
-  | 'apostlesCreed'
+  | 'creed'
   | 'ourFather'
   | 'hailMary'
   | 'gloryBe'

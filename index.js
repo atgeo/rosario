@@ -2,7 +2,7 @@ import { MYSTERIES } from './src/mysteries.js'
 import { loadLang } from './src/lang/index.js'
 
 const OPENING = [
-  'apostlesCreed',
+  'creed',
   'ourFather',
   'hailMary',
   'hailMary',
