@@ -52,17 +52,18 @@ export interface RosarioOptions {
   includeConcludingPrayers?: boolean
 }
 
-export type RosarioCurrent =
-  | {
-      readonly type: 'prayer'
-      readonly key: PrayerKey
-      readonly text: string
-    }
-  | {
-      readonly type: 'mystery'
-      readonly key: MysteryKey
-      readonly text: string
-    }
+export interface RosarioMystery {
+  readonly set: Mystery
+  readonly key: MysteryKey
+  readonly text: string
+  readonly decade: 1 | 2 | 3 | 4 | 5
+}
+
+export interface RosarioCurrent {
+  readonly key: PrayerKey
+  readonly text: string
+  readonly mystery?: RosarioMystery
+}
 
 export interface RosarioSession {
   next(): void

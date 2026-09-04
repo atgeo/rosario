@@ -72,21 +72,21 @@ function buildOrder (mystery, { includeConcludingPrayers = true }) {
   if (!events) throw new Error('Unknown mystery')
 
   return [
-    ...OPENING.map(key => ({ type: 'prayer', key })),
+    ...OPENING.map(key => ({ key })),
 
-    ...events.flatMap(eventKey => [
-      { type: 'mystery', key: eventKey },
-      ...DECADE.map(prayerKey => ({
-        type: 'prayer',
+    ...events.flatMap((eventKey, decadeIndex) =>
+      DECADE.map(prayerKey => ({
         key: prayerKey,
+        mystery: {
+          set: mystery,
+          key: eventKey,
+          decade: decadeIndex + 1,
+        },
       })),
-    ]),
+    ),
 
     ...(includeConcludingPrayers
-      ? CONCLUDING_PRAYERS.map(key => ({
-        type: 'prayer',
-        key,
-      }))
+      ? CONCLUDING_PRAYERS.map(key => ({ key }))
       : []),
   ]
 }
@@ -127,20 +127,21 @@ export default async function rosario ({
 
     current () {
       const item = order[Math.min(index, order.length - 1)]
-
-      if (item.type === 'mystery') {
-        return {
-          type: 'mystery',
-          key: item.key,
-          text: locale.mysteries[item.key],
-        }
-      }
-
-      return {
-        type: 'prayer',
+      const step = {
         key: item.key,
         text: locale.prayers[item.key],
       }
+
+      if (item.mystery) {
+        step.mystery = {
+          set: item.mystery.set,
+          key: item.mystery.key,
+          text: locale.mysteries[item.mystery.key],
+          decade: item.mystery.decade,
+        }
+      }
+
+      return step
     },
 
     done () {

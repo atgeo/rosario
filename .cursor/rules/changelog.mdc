@@ -1,0 +1,22 @@
+---
+description: What belongs in CHANGELOG.md
+globs: CHANGELOG.md
+alwaysApply: false
+---
+
+# Changelog
+
+`CHANGELOG.md` is for **package consumers** (npm API, locale keys, session behavior). Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## Include
+
+- Public API: `current()` shape, session methods, options, prayer/mystery keys
+- Defaults and prayer order a consumer can observe
+- Locale text or language additions
+
+Unreleased work since the last published version goes under `[Unreleased]`. The version commit retitles that section to `[X.Y.Z] - YYYY-MM-DD`.
+
+## Do not include
+
+- CI, GitHub Actions, publish workflow, repo tooling, Cursor rules
+- Internal refactors with the same public behavior

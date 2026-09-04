@@ -130,33 +130,52 @@ test('accepts a complete custom locale', async () => {
   assert.ok(r.current().text)
 })
 
-test('returns a mystery at the start of a decade', async () => {
+test('attaches mystery to decade prayers only', async () => {
   const r = await rosario({ mystery: 'joyful', lang: 'en' })
+  const steps = collectSteps(r)
 
-  let step
+  const opening = steps.slice(0, 6)
+  const firstDecade = steps.slice(6, 19)
+  const lastDecade = steps.slice(6 + 13 * 4, 6 + 13 * 5)
+  const concluding = steps.slice(-2)
 
-  do {
-    step = r.current()
-    if (step.type !== 'mystery') r.next()
-  } while (step.type !== 'mystery')
+  for (const step of [...opening, ...concluding]) {
+    assert.strictEqual(step.mystery, undefined)
+  }
 
-  assert.strictEqual(step.type, 'mystery')
-  assert.ok(step.key)
-  assert.ok(step.text)
-  assert.strictEqual(step.text, 'The Annunciation')
+  assert.deepStrictEqual(firstDecade[0], {
+    key: 'ourFather',
+    text: en.prayers.ourFather,
+    mystery: {
+      set: 'joyful',
+      key: 'annunciation',
+      text: 'The Annunciation',
+      decade: 1,
+    },
+  })
+
+  for (const step of firstDecade) {
+    assert.strictEqual(step.mystery?.key, 'annunciation')
+    assert.strictEqual(step.mystery?.decade, 1)
+  }
+
+  for (const step of lastDecade) {
+    assert.strictEqual(step.mystery?.key, 'findingInTemple')
+    assert.strictEqual(step.mystery?.decade, 5)
+  }
 })
 
 test('includes concluding prayers by default', async () => {
   const r = await rosario({ mystery: 'joyful', lang: 'en' })
-  const keys = collectSteps(r).map(step => step.key)
+  const steps = collectSteps(r)
+  const hailIndex = steps.findIndex(step => step.key === 'hailHolyQueen')
+  const closingIndex = steps.findIndex(step => step.key === 'closingPrayer')
 
-  const lastMysteryIndex = keys.lastIndexOf('findingInTemple')
-  const hailIndex = keys.indexOf('hailHolyQueen')
-  const closingIndex = keys.indexOf('closingPrayer')
-
-  assert.ok(hailIndex > lastMysteryIndex)
+  assert.ok(hailIndex > 0)
+  assert.strictEqual(steps[hailIndex - 1].key, 'fatimaPrayer')
+  assert.strictEqual(steps[hailIndex - 1].mystery?.key, 'findingInTemple')
   assert.strictEqual(closingIndex, hailIndex + 1)
-  assert.strictEqual(closingIndex, keys.length - 1)
+  assert.strictEqual(closingIndex, steps.length - 1)
 })
 
 test('omits Hail Holy Queen and closing prayer when includeConcludingPrayers is false', async () => {

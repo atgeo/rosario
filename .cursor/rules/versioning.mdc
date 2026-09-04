@@ -61,3 +61,4 @@ Breaking = anything a consumer could observe: removed/renamed exports, changed d
 3. After version confirmation: `npm version patch|minor|major` (creates commit + `vX.Y.Z` tag), or bump `package.json` manually with commit message `X.Y.Z`.
 4. **`npm publish` only when the user asks.** Then push the `v*` tag so `publish.yml` publishes (Trusted Publishing). Laptop `npm publish` only if the Action fails.
 5. Never publish `.gitignore`, tests, or `.idea/` — `files` in `package.json` controls the tarball.
+6. `CHANGELOG.md` lists consumer-facing package changes only (see `changelog.mdc`). Do not record CI or publish workflow.

@@ -26,6 +26,7 @@
   },
   "files": [
     "LICENSE",
+    "CHANGELOG.md",
     "index.js",
     "index.d.ts",
     "src/"
