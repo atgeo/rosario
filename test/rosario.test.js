@@ -165,6 +165,22 @@ test('attaches mystery to decade prayers only', async () => {
   }
 })
 
+test('total is the prayer count', async () => {
+  const withClosing = await rosario({ mystery: 'joyful' })
+  const withoutClosing = await rosario({
+    mystery: 'joyful',
+    includeConcludingPrayers: false,
+  })
+
+  assert.strictEqual(withClosing.total, 73)
+  assert.strictEqual(withoutClosing.total, 71)
+  assert.strictEqual(withClosing.current().total, undefined)
+
+  const steps = collectSteps(withClosing)
+  assert.strictEqual(steps.length, withClosing.total)
+  assert.strictEqual(collectSteps(withoutClosing).length, withoutClosing.total)
+})
+
 test('includes concluding prayers by default', async () => {
   const r = await rosario({ mystery: 'joyful', lang: 'en' })
   const steps = collectSteps(r)

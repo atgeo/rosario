@@ -121,6 +121,8 @@ export default async function rosario ({
   let index = 0
 
   return {
+    total: order.length,
+
     next () {
       if (index < order.length) index++
     },

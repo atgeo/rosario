@@ -66,6 +66,7 @@ export interface RosarioCurrent {
 }
 
 export interface RosarioSession {
+  readonly total: number
   next(): void
   current(): RosarioCurrent
   done(): boolean
