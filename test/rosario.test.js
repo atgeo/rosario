@@ -146,6 +146,7 @@ test('attaches mystery to decade prayers only', async () => {
   assert.deepStrictEqual(firstDecade[0], {
     key: 'ourFather',
     text: en.prayers.ourFather,
+    index: 7,
     mystery: {
       set: 'joyful',
       key: 'annunciation',
@@ -163,6 +164,16 @@ test('attaches mystery to decade prayers only', async () => {
     assert.strictEqual(step.mystery?.key, 'findingInTemple')
     assert.strictEqual(step.mystery?.decade, 5)
   }
+})
+
+test('index is 1-based position on current()', async () => {
+  const r = await rosario({ mystery: 'joyful' })
+  const steps = collectSteps(r)
+
+  assert.deepStrictEqual(
+    steps.map(step => step.index),
+    Array.from({ length: r.total }, (_, i) => i + 1),
+  )
 })
 
 test('total is the prayer count', async () => {

@@ -128,10 +128,12 @@ export default async function rosario ({
     },
 
     current () {
-      const item = order[Math.min(index, order.length - 1)]
+      const cursor = Math.min(index, order.length - 1)
+      const item = order[cursor]
       const step = {
         key: item.key,
         text: locale.prayers[item.key],
+        index: cursor + 1,
       }
 
       if (item.mystery) {

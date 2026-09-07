@@ -37,7 +37,7 @@ while (!r.done()) {
 }
 ```
 
-`current()` returns `key` and `text`. Decade prayers also include `mystery` (`set`, `key`, `text`, `decade` 1–5). Opening and concluding prayers omit it.
+`current()` returns `key`, `text`, and `index` (1 through `total`). Decade prayers also include `mystery` (`set`, `key`, `text`, `decade` 1–5). Opening and concluding prayers omit it.
 
 `total` is the number of prayers in the session (73 by default, 71 when `includeConcludingPrayers` is `false`). It is not on `current()`.
 

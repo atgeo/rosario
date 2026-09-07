@@ -1,0 +1,27 @@
+---
+description: Only test the behavior that changed
+globs: test/**/*.js
+alwaysApply: false
+---
+
+# Tests
+
+Assert the new behavior. Do not re-assert contracts another test already covers.
+
+`done()` after `next()` on the last prayer, with `current()` still that prayer, is already tested. A new field on `current()` inherits it — do not check `done()`, the last `key`, or `reset()` in that field’s test.
+
+```js
+// Good — index is 1-based and runs 1…total
+assert.deepStrictEqual(
+  collectSteps(r).map(step => step.index),
+  Array.from({ length: r.total }, (_, i) => i + 1),
+)
+
+// Not — done(), last key, and reset are other tests
+assert.strictEqual(r.current().key, 'creed')
+assert.ok(r.done())
+r.reset()
+assert.strictEqual(r.current().index, 1)
+```
+
+When an existing `deepStrictEqual` on `current()` would fail, add the new field there. Do not add a second full-object assertion.

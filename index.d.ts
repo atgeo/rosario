@@ -66,6 +66,7 @@ export interface RosarioMystery {
 export interface RosarioCurrent {
   readonly key: PrayerKey
   readonly text: string
+  readonly index: number
   readonly mystery?: RosarioMystery
 }
 
