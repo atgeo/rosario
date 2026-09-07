@@ -2,6 +2,10 @@ const LANG_LOADERS = {
   en: () => import('./en.js'),
   la: () => import('./la.js'),
   it: () => import('./it.js'),
+  es: () => import('./es.js'),
+  pt: () => import('./pt.js'),
+  fr: () => import('./fr.js'),
+  de: () => import('./de.js'),
   ar: () => import('./ar.js'),
 }
 

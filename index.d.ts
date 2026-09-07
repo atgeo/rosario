@@ -8,6 +8,10 @@ export type Language =
   | 'en'
   | 'la'
   | 'it'
+  | 'es'
+  | 'pt'
+  | 'fr'
+  | 'de'
   | 'ar'
 
 export type PrayerKey =

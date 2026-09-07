@@ -9,6 +9,10 @@ A tiny Holy Rosary prayer engine for web apps, providing programmatic access to 
 - English (en)
 - Latin (la)
 - Italian (it)
+- Spanish (es)
+- Portuguese (pt)
+- French (fr)
+- German (de)
 - Arabic (ar)
 
 ## Installation
