@@ -8,6 +8,8 @@ alwaysApply: false
 
 `CHANGELOG.md` is for **package consumers** (npm API, locale keys, session behavior). Follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+Keep `CHANGELOG.md` in git and GitHub Releases. Do **not** add it to `package.json` `files` — it is not part of the npm tarball.
+
 ## Include
 
 - Public API: `current()` shape, session methods, options, prayer/mystery keys
