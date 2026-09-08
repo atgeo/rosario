@@ -219,7 +219,7 @@ test('omits Hail Holy Queen and closing prayer when includeConcludingPrayers is 
 })
 
 test('resolves concluding prayer text in every language', async () => {
-  for (const lang of ['en', 'la', 'it', 'es', 'pt', 'fr', 'de', 'ar']) {
+  for (const lang of ['en', 'la', 'it', 'es', 'pt', 'fr', 'de', 'ar', 'tl', 'id', 'vi', 'fi', 'lt']) {
     const r = await rosario({
       mystery: 'joyful',
       lang,

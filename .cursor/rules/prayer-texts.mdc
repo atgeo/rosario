@@ -14,6 +14,11 @@ Rosary and prayer strings in `src/lang/` must be **official liturgical texts**. 
 2. **English (`en`)** — traditional English used with the rest of this locale (thee/thou), or USCCB if modernizing the whole English file.
 3. **Italian (`it`)** — Vatican News / Compendium of the Catechism.
 4. **Arabic (`ar`)** — **Maronite / Lebanese Catholic first**, then **Roman (Latin) Catholic Arabic**. Prefer Noursat / Télé Lumière and Lebanese printed rosaries. Do not use Coptic-only or homemade translations when a Maronite or Latin-rite Arabic text exists.
+5. **Tagalog (`tl`)** — CBCP traditional *Aba Ginoong Maria* (not the 2025 optional *Ave Maria*). Filipino Missal (*Aklat ng Pagmimisa sa Roma*) for *Ama Namin* and *Sumasampalataya*. Printed Santo Rosaryo (KatoLago / parish *gabay*) for Fatima, *Aba Po Santa Mariang Hari*, the closing collect, and mystery titles.
+6. **Indonesian (`id`)** — KWI / *Tata Perayaan Ekaristi* for *Aku Percaya*, *Bapa Kami*, *Salam Maria*, *Kemuliaan*. Printed *Doa Rosario* (Komisi Liturgi diocesan booklet) for Fatima (*Ya Yesus yang baik*), *Salam ya Ratu*, the closing collect, and mystery titles.
+7. **Vietnamese (`vi`)** — Vatican News / HĐGMVN traditional kinh for *Kinh Lạy Cha*, *Kinh Kính Mừng*, *Kinh Sáng Danh*. Traditional Apostles’ Creed (*Tôi tin kính Đức Chúa Trời…*). Tổng Giáo phận Hà Nội / printed chuỗi Mân Côi for Fatima, *Kinh Lạy Nữ Vương*, the closing collect, and mystery titles (*Thứ … thì ngắm*).
+8. **Finnish (`fi`)** — Katolinen kirkko Suomessa (`katolinen.fi`) daily prayers for *Apostolinen uskontunnustus*, *Isä meidän*, *Terve Maria* (*Jumalanäiti*), *Kunnia*. 2025 *Pyhä ruusukko* booklet for Fatima, *Terve, kuningatar*, the Loreto versicle, the closing collect, and mystery titles. Do not use Lutheran *Terve Maria* (*Jumalan äiti*) or Wikipedia.
+9. **Lithuanian (`lt`)** — LVK Compendium (KBKS / `katekizmas.lt`) for *Tikiu į Dievą Tėvą*, *Sveika, Marija* (*Tavo Sūnus Jėzus*, not *įsčių vaisius*), *Garbė Dievui*, *Sveika, Karaliene*, the closing collect, and mystery titles. Vilnius archdiocese / 2019 LVK *Rožinis* booklet (imprimatur G. Grušas) for *Tėve mūsų* and Fatima (*O mano Jėzau… nuodėmes*). Do not use FSSPX, Flame of Love insertions, or *maldos.lt*.
 
 If a language has no official text for a prayer, **do not fill it with a paraphrase**. Leave it out or ask the user.
 

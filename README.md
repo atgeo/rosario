@@ -6,14 +6,7 @@ A tiny Holy Rosary prayer engine for web apps, providing programmatic access to 
 
 ## Languages
 
-- English (en)
-- Latin (la)
-- Italian (it)
-- Spanish (es)
-- Portuguese (pt)
-- French (fr)
-- German (de)
-- Arabic (ar)
+English (en), Latin (la), Italian (it), Spanish (es), Portuguese (pt), French (fr), German (de), Arabic (ar), Tagalog (tl), Indonesian (id), Vietnamese (vi), Finnish (fi), Lithuanian (lt).
 
 ## Installation
 

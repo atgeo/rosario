@@ -7,6 +7,11 @@ const LANG_LOADERS = {
   fr: () => import('./fr.js'),
   de: () => import('./de.js'),
   ar: () => import('./ar.js'),
+  tl: () => import('./tl.js'),
+  id: () => import('./id.js'),
+  vi: () => import('./vi.js'),
+  fi: () => import('./fi.js'),
+  lt: () => import('./lt.js'),
 }
 
 export async function loadLang (code) {

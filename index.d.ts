@@ -13,6 +13,11 @@ export type Language =
   | 'fr'
   | 'de'
   | 'ar'
+  | 'tl'
+  | 'id'
+  | 'vi'
+  | 'fi'
+  | 'lt'
 
 export type PrayerKey =
   | 'creed'
